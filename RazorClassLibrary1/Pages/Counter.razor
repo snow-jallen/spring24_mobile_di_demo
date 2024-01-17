@@ -1,0 +1,22 @@
+@page "/counter"
+@inject ICounterService counterService
+@rendermode InteractiveServer
+<p>@Count</p>
+
+<button @onclick="AsyncIncrement">
+    Click mee!
+</button>
+
+@code {
+    public int Count;
+
+    protected override async Task OnInitializedAsync() 
+    {
+        Count = await counterService.GetCurrentValue();
+    }
+
+    public async Task AsyncIncrement()
+    {
+        Count = await counterService.IncrementCurrentValue();
+    }
+}
