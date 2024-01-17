@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using RazorClassLibrary1.Services;
+using TheReallyCoolOne.Services;
 
 namespace TheReallyCoolOne
 {
@@ -15,6 +17,7 @@ namespace TheReallyCoolOne
                 });
 
             builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddSingleton<ICounterService, MobileCounterService>();
 
 #if DEBUG
     		builder.Services.AddBlazorWebViewDeveloperTools();
